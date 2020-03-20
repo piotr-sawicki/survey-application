@@ -1,7 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from base.forms import UserRegisterForm
 
 # Create your views here.
-def my_first_view(request):
-    return HttpResponse('hello world')
-    # render(request, , {})
+def base(request):
+    context = {
+
+    }
+    return render(request, 'base/base.html', context)
+
+
+def register(request):
+    if request.POST:
+        form = UserRegisterForm(request.POST)
+
+    else:
+        form = UserRegisterForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'base/register.html', context)

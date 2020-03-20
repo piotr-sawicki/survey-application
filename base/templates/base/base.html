@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Web Application!</title>
+</head>
+<body>
+<!--It is menu bar-->
+<div style="height:50px; background-color:lightblue">
+
+    <div style="height:50px; background-color:cyan; float:left" align="center">
+            <h1>
+                <a href="{% url 'base-view' %}">Home Page</a>
+            </h1>
+    </div>
+
+    {% if not request.user.is_authenticated %}
+
+    <div style="height:50px; background-color:lightcyan; float:right">
+            <a style="float:centre" href="{% url 'base-register' %}">Register</a>
+    </div>
+
+    <div style="height:50px; background-color:cyan; float:right">
+            <a style="float:centre" href="{% url 'base-login' %}">Log In</a>
+    </div>
+
+
+    {% else %}
+    <div style="height:50px; background-color:lightcyan; float:right">
+            <a style="float:centre" href="{% url 'base-profile' %}">Profile</a>
+    </div>
+    <div style="height:50px; background-color:lightcyan; float:right">
+            <a style="float:centre" href="{% url 'base-logout' %}">Log Out</a>
+    </div>
+
+
+    {% endif %}
+
+</div>
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
